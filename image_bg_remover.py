@@ -3,12 +3,8 @@ from PIL import Image
 import streamlit as st
 import io
 from timeit import default_timer as timer
+import zipfile36 as zipfile
 
-if sys.version_info >= (3, 6):
-    import zipfile
-else:
-    import zipfile36 as zipfile
-    
 import ui
 
 def remove_img_background(processed_image, alpha_matting=False, alpha_matting_foreground_threshold=None, 
