@@ -12,7 +12,7 @@ An interactive background remover web app using Python and Streamlit, Pillow for
 - Resize them
 - Customize background color
 - Remove the background with a simple click
-- Download the processed image
+- Download the processed image as zip
 
 The app also supports advanced options like alpha matting and allows easy downloads of the processed image.
 
