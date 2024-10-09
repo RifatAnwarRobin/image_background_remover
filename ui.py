@@ -34,7 +34,7 @@ def ui_spacer(n=2, line=False, next_n=0):
 
 def ui_info():
 	st.markdown(f"""
-	# Image Background Remover Using Python
+	# Image Resizer & Background Remover Using Python
 	version {__version__}
 	""")
 	ui_spacer(1)
