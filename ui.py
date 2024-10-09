@@ -1,5 +1,5 @@
 
-__version__ = "007.01"
+__version__ = "008"
 app_name = "Image Background Remover"
 
 import streamlit as st
