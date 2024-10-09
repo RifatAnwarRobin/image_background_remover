@@ -1,6 +1,6 @@
 
 __version__ = "008"
-app_name = "Image Background Remover"
+app_name = "Image Resizer & Background Remover"
 
 import streamlit as st
 

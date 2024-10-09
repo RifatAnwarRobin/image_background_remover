@@ -65,7 +65,7 @@ def hex_to_rgba(hex_color):
     b = int(hex_color[4:6], 16)
     return (r, g, b, 255)
 
-st.title("Image Background Remover [Python + Streamlit + Pillow]")
+st.title("Image Resizer & Background Remover [Python + Streamlit + Pillow]")
 ui.show_sidebar()
 #Container for Image Upload & Preview
 with st.container():
