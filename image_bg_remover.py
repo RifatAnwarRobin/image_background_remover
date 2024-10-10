@@ -54,7 +54,7 @@ def download_zip(images_dict,selected_filter=False,file_name=False):
             image.save(img_byte_arr, format='PNG')
             zip_file.writestr(f"{filename}_removed.png", img_byte_arr.getvalue())
     zip_buffer.seek(0)
-    if file_name:
+    if file_name!=False:
         st.download_button(
             label="Download as ZIP",
             data=zip_buffer,
@@ -159,7 +159,7 @@ if inp_images and operation_mode!='Want To Resize Images' and st.button("Remove 
 
     #Download option for processed images
     if images_dict:
-        download_zip(images_dict,selected_filter=False)
+        download_zip(images_dict,selected_filter=False,file_name=False)
     
 
 if inp_images is not None and operation_mode=='Want To Resize Images':
@@ -206,7 +206,7 @@ if inp_images is not None and operation_mode=='Want To Resize Images':
 
         #Download option for processed images
         if images_dict:
-            file_name=st.text_input("Enter Filename: ")
-            download_zip(images_dict,selected_filter=selected_filter_name,file_name=file_name)
+            custom_file_name=st.text_input("Enter Filename: ")
+            download_zip(images_dict,selected_filter=selected_filter_name,file_name=custom_file_name)
 
 
