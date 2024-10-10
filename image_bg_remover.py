@@ -82,7 +82,7 @@ ui.show_sidebar()
 #Container for Image Upload & Preview
 with st.container():
     st.subheader("Upload Images")
-    inp_images = st.file_uploader(label="Upload image files in JPG format", type=['jpeg', 'jpg'], accept_multiple_files=True)
+    inp_images = st.file_uploader(label="Upload image files in JPG format", type=['jpeg', 'jpg', 'png'], accept_multiple_files=True)
     
     # Display input images in a grid
     if inp_images is not None:
