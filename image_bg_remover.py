@@ -62,6 +62,7 @@ def download_zip(images_dict,selected_filter=False,file_name=False):
     #         mime="application/zip"
     #     )
     # else:
+    print(f"{file_name}")
     st.download_button(
         label="Download as ZIP",
         data=zip_buffer,
@@ -184,6 +185,8 @@ if inp_images is not None and operation_mode=='Want To Resize Images':
     }
     selected_filter_name = st.selectbox("Select Resampling Filter:", list(resampling_filters.keys()))
     selected_filter = resampling_filters[selected_filter_name]
+    
+    custom_file_name=st.text_input("Enter Filename: ")
 
     if inp_images and st.button("Resize",type='primary'):
         with st.container():
@@ -206,7 +209,7 @@ if inp_images is not None and operation_mode=='Want To Resize Images':
 
         #Download option for processed images
         if images_dict:
-            custom_file_name=st.text_input("Enter Filename: ")
-            if not custom_file_name.strip():
+            print(f"Main Filename: {custom_file_name}")
+            if not custom_file_name:
                     custom_file_name = f"Resized_images-by-rifat.streamlit.app-[{selected_filter_name}]"
             download_zip(images_dict,selected_filter=selected_filter_name,file_name=custom_file_name)
