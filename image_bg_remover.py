@@ -46,7 +46,7 @@ def custom_image_resizer(width_input,height_input,selected_filter,original_w,ori
     
 
 
-def download_zip(images_dict):
+def download_zip(images_dict,selected_filter):
     zip_buffer = io.BytesIO()
     with zipfile.ZipFile(zip_buffer, "a", zipfile.ZIP_DEFLATED) as zip_file:
         for filename, image in images_dict.items():
@@ -57,7 +57,7 @@ def download_zip(images_dict):
     st.download_button(
         label="Download as ZIP",
         data=zip_buffer,
-        file_name="processed_images_by_re-move-size-rifat.zip",
+        file_name=f"processed_images_by_removebg-by-rifat.streamlit.app-[{selected_filter}].zip" if selected_filter!=False else f"bg_removed_images_by_removebg-by-rifat.streamlit.app.zip",
         mime="application/zip"
     )
 
@@ -151,7 +151,7 @@ if inp_images and operation_mode!='Want To Resize Images' and st.button("Remove 
 
     #Download option for processed images
     if images_dict:
-        download_zip(images_dict)
+        download_zip(images_dict,selected_filter=False)
     
 
 if inp_images is not None and operation_mode=='Want To Resize Images':
@@ -198,6 +198,6 @@ if inp_images is not None and operation_mode=='Want To Resize Images':
 
         #Download option for processed images
         if images_dict:
-            download_zip(images_dict)
+            download_zip(images_dict,selected_filter=selected_filter)
 
 
