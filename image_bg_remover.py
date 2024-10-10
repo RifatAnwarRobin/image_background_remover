@@ -28,6 +28,9 @@ def custom_image_resizer(width_input,height_input,selected_filter,original_w,ori
     elif height_input and width_input==50:
         aspect_ratio = original_w / original_h
         width_input = int(height_input * aspect_ratio)
+    elif height_input>50 and width_input>50:
+        height_input = height_input
+        width_input = width_input
     else:
         width_input=original_w
         height_input=original_h
