@@ -36,6 +36,8 @@ def custom_image_resizer(width_input,height_input,selected_filter,original_w,ori
         height_input=original_h
 
     resized_image=before_resized_image.resize((int(width_input), int(height_input)),resample=selected_filter)
+    if resized_image.mode == 'CMYK':
+        resized_image = resized_image.convert('RGB')
 
     resizer_value={
         'width_input':width_input,
