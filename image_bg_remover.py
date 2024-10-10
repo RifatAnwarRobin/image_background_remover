@@ -54,20 +54,20 @@ def download_zip(images_dict,selected_filter=False,file_name=False):
             image.save(img_byte_arr, format='PNG')
             zip_file.writestr(f"{filename}_removed.png", img_byte_arr.getvalue())
     zip_buffer.seek(0)
-    if file_name!=False:
-        st.download_button(
-            label="Download as ZIP",
-            data=zip_buffer,
-            file_name=f"{file_name}.zip",
-            mime="application/zip"
-        )
-    else:
-        st.download_button(
-            label="Download as ZIP",
-            data=zip_buffer,
-            file_name=f"processed_images_by_removebg-by-rifat.streamlit.app-[{selected_filter}].zip" if selected_filter!=False else f"bg_removed_images_by_removebg-by-rifat.streamlit.app.zip",
-            mime="application/zip"
-        )
+    # if file_name!=False:
+    #     st.download_button(
+    #         label="Download as ZIP",
+    #         data=zip_buffer,
+    #         file_name=f"{file_name}.zip",
+    #         mime="application/zip"
+    #     )
+    # else:
+    st.download_button(
+        label="Download as ZIP",
+        data=zip_buffer,
+        file_name=f"{file_name}.zip" if file_name!=False else f"bg_removed_by_removebg-by-rifat.streamlit.app.zip",
+        mime="application/zip"
+    )
 
 def hex_to_rgba(hex_color):
     hex_color = hex_color.lstrip('#')
@@ -207,6 +207,6 @@ if inp_images is not None and operation_mode=='Want To Resize Images':
         #Download option for processed images
         if images_dict:
             custom_file_name=st.text_input("Enter Filename: ")
+            if not custom_file_name.strip():
+                    custom_file_name = f"Resized_images-by-rifat.streamlit.app-[{selected_filter_name}]"
             download_zip(images_dict,selected_filter=selected_filter_name,file_name=custom_file_name)
-
-
