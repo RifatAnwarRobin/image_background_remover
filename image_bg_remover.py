@@ -198,6 +198,6 @@ if inp_images is not None and operation_mode=='Want To Resize Images':
 
         #Download option for processed images
         if images_dict:
-            download_zip(images_dict,selected_filter=selected_filter)
+            download_zip(images_dict,selected_filter=selected_filter_name)
 
 
