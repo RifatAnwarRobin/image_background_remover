@@ -22,15 +22,15 @@ def remove_img_background(processed_image, alpha_matting=False, alpha_matting_fo
     return output_image
 
 def custom_image_resizer(width_input,height_input,selected_filter,original_w,original_h):
-    if width_input and height_input==50:
+    if height_input>50 and width_input>50:
+        height_input = height_input
+        width_input = width_input
+    elif width_input and height_input==50:
         aspect_ratio = original_h / original_w
         height_input = int(width_input * aspect_ratio) 
     elif height_input and width_input==50:
         aspect_ratio = original_w / original_h
         width_input = int(height_input * aspect_ratio)
-    elif height_input>50 and width_input>50:
-        height_input = height_input
-        width_input = width_input
     else:
         width_input=original_w
         height_input=original_h
@@ -187,7 +187,7 @@ if inp_images is not None and operation_mode=='Want To Resize Images':
                 original_w, original_h = before_resized_image.size
 
                 resized_data=custom_image_resizer(width_input,height_input,selected_filter,original_w,original_h)
-                # st.write(f"{resized_data}")
+                print(f"{resized_data}")
                 resized_output_image = resized_data['resized_image']
 
                 if resized_output_image:
