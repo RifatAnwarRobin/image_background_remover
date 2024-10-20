@@ -81,6 +81,7 @@ def hex_to_rgba(hex_color):
 
 st.title("Image Resizer & Background Remover [Python + Streamlit + Pillow]")
 ui.show_sidebar()
+
 #Container for Image Upload & Preview
 with st.container():
     st.subheader("Upload Images")
