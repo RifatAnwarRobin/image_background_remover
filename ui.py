@@ -1,6 +1,6 @@
 
-__version__ = "008"
-app_name = "Image Resizer & Background Remover"
+__version__ = "009"
+app_name = "Simple Image Processor (All in One)"
 
 import streamlit as st
 
@@ -34,9 +34,13 @@ def ui_spacer(n=2, line=False, next_n=0):
 
 def ui_info():
 	st.markdown(f"""
-	# Image Resizer & Background Remover Using Python
+	# Simple Image Processor (All in One) Using Python
 	version {__version__}
 	""")
+	ui_spacer(1)
+	st.markdown("""
+		Feature List will be visible in future.
+		""")
 	ui_spacer(1)
 	st.write("Made by [Rifat Anwar Robin](https://www.linkedin.com/in/rifat-anwar-robin/).", unsafe_allow_html=True)
 	ui_spacer(1)
