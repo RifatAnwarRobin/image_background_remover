@@ -77,17 +77,25 @@ def download_zip(images_dict,selected_option=False,file_name=False):
             image.save(img_byte_arr, format='PNG')
             zip_file.writestr(f"{filename}_removed.png", img_byte_arr.getvalue())
     zip_buffer.seek(0)
-    # if file_name!=False:
-    #     st.download_button(
-    #         label="Download as ZIP",
-    #         data=zip_buffer,
-    #         file_name=f"{file_name}.zip",
-    #         mime="application/zip"
-    #     )
-    # else:
     print(f"{file_name}")
     st.download_button(
-        label="Download as ZIP",
+        label="Download as PNG ZIP",
+        data=zip_buffer,
+        file_name=f"{file_name}.zip" if file_name!=False else f"bg_removed_by_removebg-by-rifat.streamlit.app.zip",
+        mime="application/zip"
+    )
+
+def download_as_jpeg_zip(images_dict,selected_option=False,file_name=False):
+    zip_buffer = io.BytesIO()
+    with zipfile.ZipFile(zip_buffer, "a", zipfile.ZIP_DEFLATED) as zip_file:
+        for filename, image in images_dict.items():
+            img_byte_arr = io.BytesIO()
+            image.save(img_byte_arr, format='JPEG')
+            zip_file.writestr(f"{filename}_removed.jpeg", img_byte_arr.getvalue())
+    zip_buffer.seek(0)
+    print(f"{file_name}")
+    st.download_button(
+        label="Download as JPEG ZIP",
         data=zip_buffer,
         file_name=f"{file_name}.zip" if file_name!=False else f"bg_removed_by_removebg-by-rifat.streamlit.app.zip",
         mime="application/zip"
@@ -100,13 +108,13 @@ def hex_to_rgba(hex_color):
     b = int(hex_color[4:6], 16)
     return (r, g, b, 255)
 
-st.title("Image Resizer & Background Remover [Python + Streamlit + Pillow]")
+st.title("Image Processor [Python + Streamlit + Pillow]")
 ui.show_sidebar()
 
 #Container for Image Upload & Preview
 with st.container():
     st.subheader("Upload Images")
-    inp_images = st.file_uploader(label="Upload image files in JPG format", type=['jpeg', 'jpg', 'png'], accept_multiple_files=True)
+    inp_images = st.file_uploader(label="Upload image files in JPG format", type=['jpeg', 'jpg', 'png','avif','webp'], accept_multiple_files=True)
     
     # Display input images in a grid
     if inp_images is not None:
@@ -125,7 +133,7 @@ operation_mode = st.radio(
     index=0  # Default selection: Want to Remove Background
 )
 # Control Panel for Advanced Options
-if inp_images is not None and operation_mode!='Resize Images':
+if inp_images is not None and operation_mode not in ['Resize Images','Flip Images']:
     with st.container():
         st.subheader("Background Removal Options")
 
@@ -154,7 +162,7 @@ if inp_images is not None and operation_mode!='Resize Images':
             alpha_matting_background_threshold = None
             alpha_matting_erode_size = None
 
-if inp_images and operation_mode!='Resize Images' and st.button("Remove Background",type='primary'):
+if inp_images and operation_mode not in ['Resize Images','Flip Images'] and st.button("Remove Background",type='primary'):
     with st.container():
         st.subheader("Output Images with Background Removed")
         cols = st.columns(3)
@@ -185,6 +193,7 @@ if inp_images and operation_mode!='Resize Images' and st.button("Remove Backgrou
     #Download option for processed images
     if images_dict:
         download_zip(images_dict,selected_option=False,file_name=False)
+        download_as_jpeg_zip(images_dict,selected_option=False,file_name=False)
     
 
 if inp_images is not None and operation_mode=='Resize Images':
@@ -237,6 +246,7 @@ if inp_images is not None and operation_mode=='Resize Images':
             if not custom_file_name:
                     custom_file_name = f"Resized_images-by-rifat.streamlit.app-[{selected_filter_name}]"
             download_zip(images_dict,selected_option=selected_filter_name,file_name=custom_file_name)
+            download_as_jpeg_zip(images_dict,selected_option=selected_filter_name,file_name=custom_file_name)
 
 if inp_images is not None and operation_mode=='Flip Images':
     transpose_filters = {
@@ -277,3 +287,4 @@ if inp_images is not None and operation_mode=='Flip Images':
             if not custom_file_name:
                     custom_file_name = f"Flipped_images-by-rifat.streamlit.app-[{selected_transpose_name}]"
             download_zip(images_dict,selected_option=selected_transpose_name,file_name=custom_file_name)
+            download_as_jpeg_zip(images_dict,selected_option=selected_transpose_name,file_name=custom_file_name)
