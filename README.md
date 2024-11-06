@@ -6,7 +6,7 @@
 Almost everyone knows about **STREAMLIT**, which is a simple way to turn a Python script into an app with a little tweak and is also famous for data-related apps to interact with the data and visualize them. It can also benefit people who want to see what their code can do and expand the idea based on a simple Python code.
 
 ### What you are watching in the video:
-[!IMPORTANT]:>> *Note: This code and app may contain more extra functionality and features respectively while you find out. Use this following link to visually see the features == https://removebg-by-rifat.streamlit.app/ ==  or you can contact with me as well.*
+*⚠️ Important Note: This code and app may contain more extra functionality and features respectively while you find out. Use this following link to visually see the features == https://removebg-by-rifat.streamlit.app/ ==  or you can contact me as well.*
 An interactive background remover web app using Python and Streamlit, Pillow for image processing, and 'rembg' for background removal. Users can:
 
 - Upload images
