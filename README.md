@@ -7,6 +7,7 @@ Almost everyone knows about **STREAMLIT**, which is a simple way to turn a Pytho
 
 ### What you are watching in the video:
 *⚠️ Important Note: This code and app may contain more extra functionality and features respectively while you find out. Use this following link to visually see the features == https://removebg-by-rifat.streamlit.app/ ==  or you can contact me as well.*
+
 An interactive background remover web app using Python and Streamlit, Pillow for image processing, and 'rembg' for background removal. Users can:
 
 - Upload images
