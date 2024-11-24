@@ -4,3 +4,4 @@ numpy
 rembg
 pillow
 zipfile36
+onnxruntime
