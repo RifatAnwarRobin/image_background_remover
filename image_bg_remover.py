@@ -141,7 +141,7 @@ if inp_images is not None and operation_mode not in ['Resize Images','Flip Image
         only_mask = st.checkbox("Only Mask", value=False)
         post_process_mask = st.checkbox("Post Process Mask", value=False)
 
-        use_bgcolor = st.checkbox("Use selected background color instead of transparency", value=False)
+        use_bgcolor = st.checkbox("Use background color instead of transparency", value=False)
         if use_bgcolor:
             bgcolor = st.color_picker("Pick a Background Color (Optional)", "#ffffff")
         else:
