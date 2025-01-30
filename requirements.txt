@@ -6,3 +6,5 @@ pillow
 zipfile36
 onnxruntime
 llvmlite
+numba
+pymatting
